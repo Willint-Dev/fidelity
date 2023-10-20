@@ -14,15 +14,4 @@ public class FidelityMovilApplication {
 		SpringApplication.run(FidelityMovilApplication.class, args);
 	}
 
-	@Bean
-	public OpenAPI customOpenAPI(){
-		return new OpenAPI()
-				.info(new Info()
-						.title("Fidelity Spring Boot 3 API")
-						.version("0.1")
-						.description("A description")
-						.termsOfService("https://swagger.io/terms/")
-						.license(new License().name("Apache 2.0").url("https://springdoc.org/")));
-	}
-
 }

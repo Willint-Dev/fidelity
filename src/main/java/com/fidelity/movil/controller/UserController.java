@@ -1,16 +1,15 @@
 package com.fidelity.movil.controller;
 
-import com.fidelity.movil.model.User;
-import com.fidelity.movil.routes.Main;
+import com.fidelity.movil.request.UserCreationRequest;
+import com.fidelity.movil.response.FidelityResponse;
+import com.fidelity.movil.routes.ROUTE;
 import com.fidelity.movil.service.UserService;
-import org.springframework.http.HttpStatus;
+import org.springframework.http.HttpStatusCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
-
 @RestController
-@RequestMapping(Main.MAIN)
+@RequestMapping(ROUTE.MAIN)
 public class UserController {
 
     private final UserService _userService;
@@ -19,15 +18,28 @@ public class UserController {
         _userService = userService;
     }
 
-    @GetMapping(Main.USER)
-    public ResponseEntity<List<User>> getAll() {
-        return ResponseEntity.ok(_userService.findAll());
+    @GetMapping(ROUTE.USER_PARAM)
+    public ResponseEntity<FidelityResponse> getById(@PathVariable("id") long id) {
+        FidelityResponse response = _userService.findById(id);
+        if(response.getData() == null){
+            return ResponseEntity.status(HttpStatusCode.valueOf(404)).body(response);
+        }
+        return ResponseEntity.ok(response);
     }
 
-    @ResponseStatus(HttpStatus.OK)
-    @GetMapping()
-    public ResponseEntity<User> getById(@RequestParam(name = "id", defaultValue = "0") long id){
-        return ResponseEntity.ok(_userService.findById(id));
+    @GetMapping(ROUTE.USER)
+    public ResponseEntity<FidelityResponse> getAll(){
+        FidelityResponse response = _userService.findAll();
+        return ResponseEntity.ok(response);
+    }
+
+    @PostMapping(ROUTE.USER)
+    public ResponseEntity<FidelityResponse> add(@RequestBody UserCreationRequest userCreationRequest){
+        FidelityResponse response = _userService.create(userCreationRequest);
+        if(response.getData() == null){
+            return ResponseEntity.status(HttpStatusCode.valueOf(404)).body(response);
+        }
+        return ResponseEntity.status(HttpStatusCode.valueOf(201)).body(response);
     }
 
 }
