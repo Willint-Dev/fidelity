@@ -8,7 +8,6 @@ import com.fidelity.movil.response.FidelityResponse;
 import com.fidelity.movil.service.IMPService.IMPFidelityManagerService;
 import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Service

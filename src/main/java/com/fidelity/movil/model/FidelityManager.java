@@ -36,6 +36,7 @@ public class FidelityManager {
     @Column(name = "update_date")
     private Date update_date;
 
+    /* HACE MAS COMODO PARA EL DEV VER LA RELACION ENTRE CLIENTE Y GESTOR, MAS NO ES RECOMENDABLE TENER ESTAS LINEAS 40 Y 41 CUANDO EL PROGRAMA TIENE MUCHOS DATOS */
     @OneToMany(mappedBy = "manager")
     private Set<Client> clients;
 

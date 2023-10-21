@@ -20,7 +20,8 @@ public class ClientService implements IMPClientService {
         _clientRepository = clientRepository;
     }
 
-
+    /* ESTE METODO RECIBE UN JSONNODE, LUEGO TRANSFORMA ESE JSON EN UN OBJETO DE TIPO FIDELITYMANAGER PARA HACER MAS FACIL EL TRABAJAR CON LOS DATOS */
+    /* GENERA UNA LISTA DE MANAGERS BASADOS EN EL JSON QUE DEVUELVE EL OTRO ENDPOINT */
     @Override
     public List<FidelityManager> loadManagers(JsonNode jsonBody) {
         List<FidelityManager> lstManager = new ArrayList<>();
@@ -42,6 +43,8 @@ public class ClientService implements IMPClientService {
         return _clientRepository.loadCLients();
     }
 
+    /* ASIGNA DE FORMA AUTOMATICA GESTOR A LOS CLIENTES, TENIENDO EN CUENTA SI SON EMPRESARIAL, SENIOR, COMERCIAL Y RESIDENCIAL JUNIOR. */
+    /* LA LISTA RECIBIDA DE GESTORES, VIENE ORDENADA POR EL GESTOR QUE TENGA MENOS CLIENTES ASIGNADOS. */
     @Override
     public void assignManger(List<Client> lstClients, List<FidelityManager> lstManagers) {
         for (Client client : lstClients){

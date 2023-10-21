@@ -27,6 +27,7 @@ public class Client {
     @Column(name = "phone_client")
     private String phone;
 
+    /* HACE REFERENCIA A LA RELACION QUE EXISTE ENTRE CLIENTE Y GESTOR */
     @ManyToOne
     @JoinColumn(name = "id_manager" )
     private FidelityManager manager;
@@ -35,6 +36,7 @@ public class Client {
         super();
     }
 
+    /* DEBE ESTUDIAR QUE ES SOBRECARGA DE CONSTRUCTORES PARA ENTENDER ESTO */
     public Client(long id, String name, String type, float billing, String email, String phone, FidelityManager fidelityManager) {
         this.id = id;
         this.name = name;
