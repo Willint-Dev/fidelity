@@ -8,6 +8,9 @@ import com.fidelity.movil.response.FidelityResponse;
 import com.fidelity.movil.service.IMPService.IMPFidelityManagerService;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Service
 public class FidelityManagerService implements IMPFidelityManagerService {
     private final FidelityManagerRepository _fidelityManagerRepository;
@@ -50,11 +53,9 @@ public class FidelityManagerService implements IMPFidelityManagerService {
     }
 
     @Override
-    public FidelityResponse findAll() {
-        FidelityResponse response = new FidelityResponse();
-        response.setData(_fidelityManagerRepository.findAll());
-        response.setMessage("Mensaje de creacion de gestor");
-        response.setCode(201);
-        return response;
+    public List<FidelityManager> findAllManagerByType() {
+        return _fidelityManagerRepository.findAllManagersOrderByNumberOfClients();
     }
+
+
 }

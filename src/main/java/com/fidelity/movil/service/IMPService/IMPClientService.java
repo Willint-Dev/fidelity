@@ -1,7 +1,14 @@
 package com.fidelity.movil.service.IMPService;
 
-import com.fidelity.movil.response.FidelityResponse;
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fidelity.movil.model.Client;
+import com.fidelity.movil.model.FidelityManager;
+
+import java.util.List;
 
 public interface IMPClientService {
-    FidelityResponse findByIdManager(long id_manager);
+    List<FidelityManager> loadManagers(JsonNode jsonBody);
+    List<Client> loadClients();
+    void assignManger(List<Client> lstClients, List<FidelityManager> lstManagers);
+    List<Client> findClientByManager(long id_manager);
 }

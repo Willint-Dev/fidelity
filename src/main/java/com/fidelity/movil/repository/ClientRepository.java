@@ -11,4 +11,7 @@ public interface ClientRepository extends JpaRepository<Client, Long> {
     @Query(value = "SELECT * FROM client  c WHERE c.id_manager = ?1", nativeQuery = true)
     List<Client> findAllByManager(long id);
 
+    @Query(value = "SELECT * FROM CLIENT C WHERE C.ID_MANAGER IS NULL", nativeQuery = true)
+    List<Client> loadCLients();
+
 }

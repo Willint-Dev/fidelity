@@ -36,7 +36,7 @@ public class FidelityManager {
     @Column(name = "update_date")
     private Date update_date;
 
-    @OneToMany(mappedBy = "FidelityManager")
+    @OneToMany(mappedBy = "manager")
     private Set<Client> clients;
 
     public FidelityManager() {

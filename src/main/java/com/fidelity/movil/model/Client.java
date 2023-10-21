@@ -28,20 +28,29 @@ public class Client {
     private String phone;
 
     @ManyToOne
-    @JoinColumn(name = "id_manager", nullable = false)
-    private FidelityManager FidelityManager;
+    @JoinColumn(name = "id_manager" )
+    private FidelityManager manager;
 
     public Client() {
         super();
     }
 
-    public Client(long id, String name, String type, float billing, String email, String phone, com.fidelity.movil.model.FidelityManager fidelityManager) {
+    public Client(long id, String name, String type, float billing, String email, String phone, FidelityManager fidelityManager) {
         this.id = id;
         this.name = name;
         this.type = type;
         this.billing = billing;
         this.email = email;
         this.phone = phone;
-        FidelityManager = fidelityManager;
+        manager = fidelityManager;
+    }
+
+    public Client(long id, String name, String type, float billing, String email, String phone) {
+        this.id = id;
+        this.name = name;
+        this.type = type;
+        this.billing = billing;
+        this.email = email;
+        this.phone = phone;
     }
 }

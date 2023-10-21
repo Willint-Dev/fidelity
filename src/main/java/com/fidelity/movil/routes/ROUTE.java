@@ -9,4 +9,6 @@ public interface ROUTE {
     String FIDELITY_MANAGER_ALL = "/mangerAll";
 
     String CLIENT = "/client";
+    String ASSIGN = CLIENT + "/assignClient";
+    String MANAGER_CLIENT = CLIENT + "/manager";
 }
