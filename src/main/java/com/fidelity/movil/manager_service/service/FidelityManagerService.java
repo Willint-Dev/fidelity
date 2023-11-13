@@ -53,6 +53,10 @@ public class FidelityManagerService implements IMPFidelityManagerService {
     public List<Object> findAllManagerByType() {
         return _fidelityManagerRepository.findAllManager();
     }
+    @Override
+    public List<FidelityManager> listManagerForAsing() {
+        return _fidelityManagerRepository.findAllManagersOrderByNumberOfClients();
+    }
 
 
 }

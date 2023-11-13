@@ -11,4 +11,5 @@ public interface IMPFidelityManagerService {
     FidelityResponse create(FidelityManagerRequest fidelityManagerRequest);
     Optional<FidelityManager> findById(long id);
     List<Object> findAllManagerByType();
+    List<FidelityManager> listManagerForAsing();
 }

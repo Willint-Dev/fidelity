@@ -7,6 +7,7 @@ public interface ROUTE {
 
     String FIDELITY_MANAGER = "/manger";
     String FIDELITY_MANAGER_ALL = "/mangerAll";
+    String FIDELITY_MANAGER_FOR_ASSIGN = "/list-manager";
 
     String CLIENT = "/client/all";
     String CLIENT_PATCH_VARIABLE = "/client";

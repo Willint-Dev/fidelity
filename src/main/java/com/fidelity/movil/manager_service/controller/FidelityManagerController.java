@@ -1,5 +1,6 @@
 package com.fidelity.movil.manager_service.controller;
 
+import com.fidelity.movil.citations_service.route.MAIN;
 import com.fidelity.movil.cliente_service.routes.ROUTE;
 import com.fidelity.movil.manager_service.model.FidelityManager;
 import com.fidelity.movil.manager_service.request.FidelityManagerRequest;
@@ -43,6 +44,11 @@ public class FidelityManagerController {
             return ResponseEntity.status(HttpStatusCode.valueOf(404)).body(response);
         }
         return ResponseEntity.ok(response);
+    }
+
+    @GetMapping(ROUTE.FIDELITY_MANAGER_FOR_ASSIGN)
+    public ResponseEntity<List<FidelityManager>> listMangersForAsing(){
+    return ResponseEntity.ok(_fidelityManagerService.listManagerForAsing());
     }
 
 }

@@ -23,7 +23,7 @@ public class ClientController {
 
     @GetMapping(ROUTE.MANAGER_CLIENT)
     public List<FidelityManager> loadManagers() {
-        String uri = "http://localhost:8080/v1/fidelity/mangerAll";
+        String uri = "http://localhost:8080/v1/fidelity/list-manager";
         RestTemplate restTemplate = new RestTemplate();
         JsonNode result = restTemplate.getForEntity(uri, JsonNode.class).getBody();
         List<FidelityManager> lstManager = _clientService.loadManagers(result);
