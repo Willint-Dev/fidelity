@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class ClientService implements IMPClientService {
@@ -52,7 +53,7 @@ public class ClientService implements IMPClientService {
                 if(client.getType().equals("Empresarial") && manager.getType().equals("Senior")){
                     client.setManager(manager);
                     break;
-                }else if(client.getType().equals("Comercial") || client.getType().equals("Residencial") && manager.getType().equalsIgnoreCase("Senior")){
+                }else if(client.getType().equals("Comercial") || client.getType().equals("Residencial") && manager.getType().equalsIgnoreCase("Junior")){
                     client.setManager(manager);
                     break;
                 }
@@ -62,7 +63,7 @@ public class ClientService implements IMPClientService {
     }
 
     @Override
-    public List<Client> findClientByManager(long id_manager) {
-        return _clientRepository.findAllByManager(id_manager);
+    public Optional<Client> findClientById(long id_client) {
+        return _clientRepository.findById(id_client);
     }
 }

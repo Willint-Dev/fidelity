@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.client.RestTemplate;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.concurrent.ExecutionException;
 
 @RestController
@@ -40,5 +41,10 @@ public class ClientController {
         List<Client> lstClient = loadClients();
 
         _clientService.assignManger(lstClient, lstManagers);
+    }
+
+    @GetMapping(ROUTE.CLIENT_PATCH_VARIABLE)
+    public Optional<Client> getClientById(@RequestParam(value = "id_client", defaultValue = "0") long id){
+        return _clientService.findClientById(id);
     }
 }

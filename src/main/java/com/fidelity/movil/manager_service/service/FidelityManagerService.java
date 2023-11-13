@@ -2,6 +2,7 @@ package com.fidelity.movil.manager_service.service;
 
 import com.fidelity.movil.manager_service.mapping.FidelityMangerMapping;
 import com.fidelity.movil.manager_service.model.FidelityManager;
+import com.fidelity.movil.manager_service.model.OptionalManager;
 import com.fidelity.movil.manager_service.repository.FidelityManagerRepository;
 import com.fidelity.movil.manager_service.request.FidelityManagerRequest;
 import com.fidelity.movil.manager_service.response.FidelityResponse;
@@ -9,6 +10,7 @@ import com.fidelity.movil.manager_service.service.IMPService.IMPFidelityManagerS
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class FidelityManagerService implements IMPFidelityManagerService {
@@ -36,24 +38,21 @@ public class FidelityManagerService implements IMPFidelityManagerService {
     }
 
     @Override
-    public FidelityResponse findById(long id) {
-        FidelityResponse response = new FidelityResponse();
+    public Optional<FidelityManager> findById(long id) {
+        Optional<FidelityManager> response = null;
 
         try {
-            response.setData(_fidelityManagerRepository.findById(id).get());
-            response.setMessage("Mensaje de busqueda de gestor");
-            response.setCode(200);
+            response = _fidelityManagerRepository.findById(id);
+
         } catch (Exception e) {
-            response.setData(null);
-            response.setMessage(e.getMessage());
-            response.setCode(404);
+            e.printStackTrace();
         }
         return response;
     }
 
     @Override
-    public List<FidelityManager> findAllManagerByType() {
-        return _fidelityManagerRepository.findAllManagersOrderByNumberOfClients();
+    public List<OptionalManager> findAllManagerByType() {
+        return _fidelityManagerRepository.findAllManager();
     }
 
 

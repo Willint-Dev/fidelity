@@ -5,10 +5,11 @@ import com.fidelity.movil.cliente_service.model.Client;
 import com.fidelity.movil.manager_service.model.FidelityManager;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface IMPClientService {
     List<FidelityManager> loadManagers(JsonNode jsonBody);
     List<Client> loadClients();
     void assignManger(List<Client> lstClients, List<FidelityManager> lstManagers);
-    List<Client> findClientByManager(long id_manager);
+    Optional<Client> findClientById(long id_client);
 }

@@ -1,6 +1,7 @@
 package com.fidelity.movil.manager_service.repository;
 
 import com.fidelity.movil.manager_service.model.FidelityManager;
+import com.fidelity.movil.manager_service.model.OptionalManager;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
@@ -15,5 +16,6 @@ public interface FidelityManagerRepository extends JpaRepository<FidelityManager
     @Query(value = "SELECT F.ID_MANAGER, F.NAME_MANAGER, F.TYPE_MANAGER, F.EMAIL_MANAGER, F.PHONE_MANAGER, F.CREATION_DATE, F.UPDATE_DATE, F.PASSWORD_MANAGER FROM FIDElITY_MANAGER F LEFT JOIN (SELECT ID_MANAGER, COUNT(*) AS NUMBER_OF_TIMES FROM CLIENT GROUP BY ID_MANAGER ) C ON F.ID_MANAGER = C.ID_MANAGER ORDER BY C.NUMBER_OF_TIMES", nativeQuery = true)
     List<FidelityManager> findAllManagersOrderByNumberOfClients();
 
-
+    @Query(value = "SELECT F.ID_MANAGER,F.TYPE_MANAGER, F.NAME_MANAGER, F.EMAIL_MANAGER, F.PHONE_MANAGER, F.CREATION_DATE, F.UPDATE_DATE, F.PASSWORD_MANAGER, C.ID_CLIENT FROM client C, fidelity_manager F WHERE C.ID_MANAGER = F.ID_MANAGER", nativeQuery = true)
+    List<OptionalManager> findAllManager();
 }
