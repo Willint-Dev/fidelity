@@ -2,7 +2,6 @@ package com.fidelity.movil.manager_service.controller;
 
 import com.fidelity.movil.cliente_service.routes.ROUTE;
 import com.fidelity.movil.manager_service.model.FidelityManager;
-import com.fidelity.movil.manager_service.model.OptionalManager;
 import com.fidelity.movil.manager_service.request.FidelityManagerRequest;
 import com.fidelity.movil.manager_service.response.FidelityResponse;
 import com.fidelity.movil.manager_service.service.FidelityManagerService;
@@ -11,7 +10,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.Objects;
 import java.util.Optional;
 
 @RestController
@@ -34,7 +32,7 @@ public class FidelityManagerController {
     }
 
     @GetMapping(ROUTE.FIDELITY_MANAGER_ALL)
-    public ResponseEntity<List<OptionalManager>> findAllManagerByType() {
+    public ResponseEntity<List<FidelityManager>> findAllManagerByType() {
         return ResponseEntity.ok(_fidelityManagerService.findAllManagerByType());
     }
 

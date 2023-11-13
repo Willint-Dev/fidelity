@@ -2,7 +2,6 @@ package com.fidelity.movil.manager_service.service;
 
 import com.fidelity.movil.manager_service.mapping.FidelityMangerMapping;
 import com.fidelity.movil.manager_service.model.FidelityManager;
-import com.fidelity.movil.manager_service.model.OptionalManager;
 import com.fidelity.movil.manager_service.repository.FidelityManagerRepository;
 import com.fidelity.movil.manager_service.request.FidelityManagerRequest;
 import com.fidelity.movil.manager_service.response.FidelityResponse;
@@ -51,8 +50,8 @@ public class FidelityManagerService implements IMPFidelityManagerService {
     }
 
     @Override
-    public List<OptionalManager> findAllManagerByType() {
-        return _fidelityManagerRepository.findAllManager();
+    public List<FidelityManager> findAllManagerByType() {
+        return _fidelityManagerRepository.findAllManagersOrderByNumberOfClients();
     }
 
 
