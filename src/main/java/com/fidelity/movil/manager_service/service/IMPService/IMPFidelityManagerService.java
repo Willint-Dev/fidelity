@@ -10,5 +10,5 @@ import java.util.Optional;
 public interface IMPFidelityManagerService {
     FidelityResponse create(FidelityManagerRequest fidelityManagerRequest);
     Optional<FidelityManager> findById(long id);
-    List<FidelityManager> findAllManagerByType();
+    List<Object> findAllManagerByType();
 }

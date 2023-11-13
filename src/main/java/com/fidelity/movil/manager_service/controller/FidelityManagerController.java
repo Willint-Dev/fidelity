@@ -32,7 +32,7 @@ public class FidelityManagerController {
     }
 
     @GetMapping(ROUTE.FIDELITY_MANAGER_ALL)
-    public ResponseEntity<List<FidelityManager>> findAllManagerByType() {
+    public ResponseEntity<List<Object>> findAllManagerByType() {
         return ResponseEntity.ok(_fidelityManagerService.findAllManagerByType());
     }
 
